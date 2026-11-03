@@ -1,0 +1,6 @@
+Module4_Assignment_Student.pdf
+data/
+mlflow.db
+mlruns/
+__pycache__/
+.pytest_cache/

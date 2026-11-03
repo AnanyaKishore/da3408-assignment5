@@ -1,0 +1,25 @@
+{
+  "n_requests_each": 200,
+  "versions": {
+    "prod": [
+      "v1"
+    ],
+    "candidate": [
+      "v2"
+    ]
+  },
+  "mean_abs_diff_min": 9.48,
+  "pct_diff_gt_10_min": 35.0,
+  "p95_ms": {
+    "prod": 4.51,
+    "candidate": 4.18
+  },
+  "p50_ms": {
+    "prod": 3.34,
+    "candidate": 3.32
+  },
+  "mae_vs_truth_on_these_200": {
+    "prod": 11.42,
+    "candidate": 6.11
+  }
+}

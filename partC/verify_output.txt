@@ -1,0 +1,28 @@
+Ray cluster resources: {'memory': 3723549492.0, 'CPU': 2.0}
+Deployments: {'EtaModelV1': 'HEALTHY', 'EtaModelV2': 'HEALTHY', 'Router': 'HEALTHY'}
+CPU per replica: EtaModel 0.25, Router 0.1 -> worst case 0.1 + 2*0.25 + 3*0.25 = 1.35 CPUs
+Candidate autoscaling_config: {'min_replicas': 1, 'max_replicas': 3, 'initial_replicas': 1, 'target_ongoing_requests': 2, 'upscale_delay_s': 5, 'downscale_delay_s': 60, 'look_back_period_s': 15}
+
+=== (a) share of 1000 customers routed to the candidate at weight 0.2
+v2: 189  v1: 811  share = 0.189 (target 0.200 +- 0.040)
+PASS (a)
+
+=== (b) 200 customers called a second time
+same arm: 200/200  changed: 0  (of these 200, 39 are on v2)
+PASS (b)
+
+=== (c) redeploy the identical app (delete and run) and call all 1000 again
+same arm after redeploy: 1000/1000  changed: 0
+PASS (c)
+
+=== (d) raise weight 0.2 -> 0.5
+share now 0.490; v1->v2: 301; v2->v1: 0; stayed on v2: 189
+PASS (d)
+
+=== (e) X-Beta: 1 on 50 customers that are normally on prod (v1)
+with header -> v2: 50/50;  same customers without header -> v1: 50/50
+PASS (e)
+
+Replica states at the end: {'EtaModelV1': {'RUNNING': 2}, 'EtaModelV2': {'RUNNING': 1}, 'Router': {'RUNNING': 1}}
+
+ALL CHECKS PASSED

@@ -1,0 +1,82 @@
+{
+  "thresholds": "defaults",
+  "prod": {
+    "model_version": "v1",
+    "mae": 11.955,
+    "mae_rush": 19.68,
+    "mae_rain": 11.623,
+    "p95_ms": 0.905
+  },
+  "candidate": {
+    "model_version": "v2",
+    "mae": 6.105,
+    "mae_rush": 8.58,
+    "mae_rain": 6.285,
+    "p95_ms": 0.939
+  },
+  "criteria": {
+    "mae_rel_gain": {
+      "value": 0.4894,
+      "threshold": ">= 0.03",
+      "pass": true
+    },
+    "p95_ms": {
+      "value": 0.939,
+      "threshold": "<= 10.0",
+      "pass": true
+    },
+    "mae_rush_no_regression": {
+      "value": 8.58,
+      "threshold": "<= 20.664",
+      "pass": true
+    },
+    "mae_rain_no_regression": {
+      "value": 6.285,
+      "threshold": "<= 12.204",
+      "pass": true
+    }
+  },
+  "promote": true
+}
+{
+  "thresholds": {
+    "min_rel_gain": 0.6
+  },
+  "prod": {
+    "model_version": "v1",
+    "mae": 11.955,
+    "mae_rush": 19.68,
+    "mae_rain": 11.623,
+    "p95_ms": 0.912
+  },
+  "candidate": {
+    "model_version": "v2",
+    "mae": 6.105,
+    "mae_rush": 8.58,
+    "mae_rain": 6.285,
+    "p95_ms": 0.893
+  },
+  "criteria": {
+    "mae_rel_gain": {
+      "value": 0.4894,
+      "threshold": ">= 0.6",
+      "pass": false
+    },
+    "p95_ms": {
+      "value": 0.893,
+      "threshold": "<= 10.0",
+      "pass": true
+    },
+    "mae_rush_no_regression": {
+      "value": 8.58,
+      "threshold": "<= 20.664",
+      "pass": true
+    },
+    "mae_rain_no_regression": {
+      "value": 6.285,
+      "threshold": "<= 12.204",
+      "pass": true
+    }
+  },
+  "promote": false
+}
